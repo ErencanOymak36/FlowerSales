@@ -1,0 +1,90 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>E-Offer Admin</title>
+    <link href="/Web/dist/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Sign Up As Client</h3></div>
+                                <div class="card-body">
+
+                                    <form method="post" action="/Admin/ClientLogin">
+                                        <label> İsim</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> Soyisim</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> E-mail</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> Şifre</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> Telefon Numarası</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> Adres</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> Kredi Kartı Numarası</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> CVV Numarası</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <label> Kredi Kartı Son Kullanım Tarihi</label>
+                                        <input type="text" name="name1" class="form-control" />
+                                        <br />
+                                        <button type="button" value="submit" class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Kayıt Ol</button>
+                                        <button type="button" value="submit" class="btn btn-success" style="margin-left:95px;"onclick="window.location.href = '/Admin/SalerLogin/';">Satıcı Olmak İstiyorum</button>
+                                    </form>
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+
+    <Script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></Script>
+    <Script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></Script>
+    <Script src="js/scripts.js"></Script>
+
+    <div Class="modal" id="Modal1">
+        <div Class="modal-dialog">
+            <div Class="modal-content">
+                <div Class="modal-header">
+                    @*<h2 Class="modal-title">Manuel Olarak Ekle</h2>*@
+                </div>
+                <form method="post">
+                    <div Class="modal-body">
+                        <h3>Kaydınız başarıyla tamamlanmıştır.</h3>
+                      
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

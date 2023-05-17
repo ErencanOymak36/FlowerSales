@@ -1,0 +1,32 @@
+﻿@model WebApplication1.Models.Entity.TBL_YENIYIL
+@{
+    ViewBag.Title = "YearGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("YearGuncelle", "Admin", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.FLOWERID)
+        @Html.TextBoxFor(m => m.FLOWERID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.FLOWERNAME)
+        @Html.TextBoxFor(m => m.FLOWERNAME, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.FIYAT)
+        @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.STOK)
+        @Html.TextBoxFor(m => m.STOK, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.PHOTO)
+        @Html.TextBoxFor(m => m.PHOTO, new { @class = "form-control" })
+        <br />
+
+    </div>
+    <div>
+        <button class="btn btn-warning">Bilgileri Güncelle</button>
+    </div>
+}
+
+

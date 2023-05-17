@@ -1,0 +1,602 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FlowersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBL_ANNE">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="tinyint" />
+          <Property Name="PHOTO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_DG">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="tinyint" />
+          <Property Name="PHOTO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_KULLANICI">
+          <Key>
+            <PropertyRef Name="KULLANICIAD" />
+          </Key>
+          <Property Name="KULLANICIAD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="TBL_MUSTERI">
+          <Key>
+            <PropertyRef Name="MUSTERIID" />
+          </Key>
+          <Property Name="MUSTERIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MUSTERIAD" Type="varchar" MaxLength="50" />
+          <Property Name="MUSTERISOYAD" Type="varchar" MaxLength="50" />
+          <Property Name="MUSTERIYER" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_SATISLAR">
+          <Key>
+            <PropertyRef Name="SATISID" />
+          </Key>
+          <Property Name="SATISID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWER" Type="int" />
+          <Property Name="MUSTERI" Type="int" />
+          <Property Name="ADET" Type="tinyint" />
+          <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBL_SEVGİLİ">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="tinyint" />
+          <Property Name="PHOTO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_WEDDING">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="tinyint" />
+          <Property Name="PHOTO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_YENIIS">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="tinyint" />
+          <Property Name="PHOTO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_YENIYIL">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FLOWERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="tinyint" />
+          <Property Name="PHOTO" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_TBL_SATISLAR_TBL_ANNE">
+          <End Role="TBL_ANNE" Type="Self.TBL_ANNE" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ANNE">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_DG">
+          <End Role="TBL_DG" Type="Self.TBL_DG" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_DG">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_MUSTERI">
+          <End Role="TBL_MUSTERI" Type="Self.TBL_MUSTERI" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MUSTERI">
+              <PropertyRef Name="MUSTERIID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="MUSTERI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_SEVGİLİ">
+          <End Role="TBL_SEVGİLİ" Type="Self.TBL_SEVGİLİ" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_SEVGİLİ">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_WEDDING">
+          <End Role="TBL_WEDDING" Type="Self.TBL_WEDDING" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_WEDDING">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_YENIIS">
+          <End Role="TBL_YENIIS" Type="Self.TBL_YENIIS" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_YENIIS">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_YENIYIL">
+          <End Role="TBL_YENIYIL" Type="Self.TBL_YENIYIL" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_YENIYIL">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FlowersModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_ANNE" EntityType="Self.TBL_ANNE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_DG" EntityType="Self.TBL_DG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_KULLANICI" EntityType="Self.TBL_KULLANICI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MUSTERI" EntityType="Self.TBL_MUSTERI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_SATISLAR" EntityType="Self.TBL_SATISLAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_SEVGİLİ" EntityType="Self.TBL_SEVGİLİ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_WEDDING" EntityType="Self.TBL_WEDDING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_YENIIS" EntityType="Self.TBL_YENIIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_YENIYIL" EntityType="Self.TBL_YENIYIL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_ANNE" Association="Self.FK_TBL_SATISLAR_TBL_ANNE">
+            <End Role="TBL_ANNE" EntitySet="TBL_ANNE" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_DG" Association="Self.FK_TBL_SATISLAR_TBL_DG">
+            <End Role="TBL_DG" EntitySet="TBL_DG" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_MUSTERI" Association="Self.FK_TBL_SATISLAR_TBL_MUSTERI">
+            <End Role="TBL_MUSTERI" EntitySet="TBL_MUSTERI" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_SEVGİLİ" Association="Self.FK_TBL_SATISLAR_TBL_SEVGİLİ">
+            <End Role="TBL_SEVGİLİ" EntitySet="TBL_SEVGİLİ" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_WEDDING" Association="Self.FK_TBL_SATISLAR_TBL_WEDDING">
+            <End Role="TBL_WEDDING" EntitySet="TBL_WEDDING" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_YENIIS" Association="Self.FK_TBL_SATISLAR_TBL_YENIIS">
+            <End Role="TBL_YENIIS" EntitySet="TBL_YENIIS" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_YENIYIL" Association="Self.FK_TBL_SATISLAR_TBL_YENIYIL">
+            <End Role="TBL_YENIYIL" EntitySet="TBL_YENIYIL" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FlowersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBL_ANNE">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="Byte" />
+          <Property Name="PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_SATISLAR" Relationship="Self.FK_TBL_SATISLAR_TBL_ANNE" FromRole="TBL_ANNE" ToRole="TBL_SATISLAR" />
+        </EntityType>
+        <EntityType Name="TBL_DG">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="Byte" />
+          <Property Name="PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_SATISLAR" Relationship="Self.FK_TBL_SATISLAR_TBL_DG" FromRole="TBL_DG" ToRole="TBL_SATISLAR" />
+        </EntityType>
+        <EntityType Name="TBL_KULLANICI">
+          <Key>
+            <PropertyRef Name="KULLANICIAD" />
+          </Key>
+          <Property Name="KULLANICIAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBL_MUSTERI">
+          <Key>
+            <PropertyRef Name="MUSTERIID" />
+          </Key>
+          <Property Name="MUSTERIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MUSTERIAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MUSTERISOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MUSTERIYER" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBL_SATISLAR" Relationship="Self.FK_TBL_SATISLAR_TBL_MUSTERI" FromRole="TBL_MUSTERI" ToRole="TBL_SATISLAR" />
+        </EntityType>
+        <EntityType Name="TBL_SATISLAR">
+          <Key>
+            <PropertyRef Name="SATISID" />
+          </Key>
+          <Property Name="SATISID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWER" Type="Int32" />
+          <Property Name="MUSTERI" Type="Int32" />
+          <Property Name="ADET" Type="Byte" />
+          <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="TBL_ANNE" Relationship="Self.FK_TBL_SATISLAR_TBL_ANNE" FromRole="TBL_SATISLAR" ToRole="TBL_ANNE" />
+          <NavigationProperty Name="TBL_DG" Relationship="Self.FK_TBL_SATISLAR_TBL_DG" FromRole="TBL_SATISLAR" ToRole="TBL_DG" />
+          <NavigationProperty Name="TBL_MUSTERI" Relationship="Self.FK_TBL_SATISLAR_TBL_MUSTERI" FromRole="TBL_SATISLAR" ToRole="TBL_MUSTERI" />
+          <NavigationProperty Name="TBL_SEVGİLİ" Relationship="Self.FK_TBL_SATISLAR_TBL_SEVGİLİ" FromRole="TBL_SATISLAR" ToRole="TBL_SEVGİLİ" />
+          <NavigationProperty Name="TBL_WEDDING" Relationship="Self.FK_TBL_SATISLAR_TBL_WEDDING" FromRole="TBL_SATISLAR" ToRole="TBL_WEDDING" />
+          <NavigationProperty Name="TBL_YENIIS" Relationship="Self.FK_TBL_SATISLAR_TBL_YENIIS" FromRole="TBL_SATISLAR" ToRole="TBL_YENIIS" />
+          <NavigationProperty Name="TBL_YENIYIL" Relationship="Self.FK_TBL_SATISLAR_TBL_YENIYIL" FromRole="TBL_SATISLAR" ToRole="TBL_YENIYIL" />
+        </EntityType>
+        <EntityType Name="TBL_SEVGİLİ">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="Byte" />
+          <Property Name="PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_SATISLAR" Relationship="Self.FK_TBL_SATISLAR_TBL_SEVGİLİ" FromRole="TBL_SEVGİLİ" ToRole="TBL_SATISLAR" />
+        </EntityType>
+        <EntityType Name="TBL_WEDDING">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="Byte" />
+          <Property Name="PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_SATISLAR" Relationship="Self.FK_TBL_SATISLAR_TBL_WEDDING" FromRole="TBL_WEDDING" ToRole="TBL_SATISLAR" />
+        </EntityType>
+        <EntityType Name="TBL_YENIIS">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="Byte" />
+          <Property Name="PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_SATISLAR" Relationship="Self.FK_TBL_SATISLAR_TBL_YENIIS" FromRole="TBL_YENIIS" ToRole="TBL_SATISLAR" />
+        </EntityType>
+        <EntityType Name="TBL_YENIYIL">
+          <Key>
+            <PropertyRef Name="FLOWERID" />
+          </Key>
+          <Property Name="FLOWERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FLOWERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="STOK" Type="Byte" />
+          <Property Name="PHOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBL_SATISLAR" Relationship="Self.FK_TBL_SATISLAR_TBL_YENIYIL" FromRole="TBL_YENIYIL" ToRole="TBL_SATISLAR" />
+        </EntityType>
+        <Association Name="FK_TBL_SATISLAR_TBL_ANNE">
+          <End Role="TBL_ANNE" Type="Self.TBL_ANNE" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_ANNE">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_DG">
+          <End Role="TBL_DG" Type="Self.TBL_DG" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_DG">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_MUSTERI">
+          <End Role="TBL_MUSTERI" Type="Self.TBL_MUSTERI" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_MUSTERI">
+              <PropertyRef Name="MUSTERIID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="MUSTERI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_SEVGİLİ">
+          <End Role="TBL_SEVGİLİ" Type="Self.TBL_SEVGİLİ" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_SEVGİLİ">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_WEDDING">
+          <End Role="TBL_WEDDING" Type="Self.TBL_WEDDING" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_WEDDING">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_YENIIS">
+          <End Role="TBL_YENIIS" Type="Self.TBL_YENIIS" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_YENIIS">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBL_SATISLAR_TBL_YENIYIL">
+          <End Role="TBL_YENIYIL" Type="Self.TBL_YENIYIL" Multiplicity="0..1" />
+          <End Role="TBL_SATISLAR" Type="Self.TBL_SATISLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBL_YENIYIL">
+              <PropertyRef Name="FLOWERID" />
+            </Principal>
+            <Dependent Role="TBL_SATISLAR">
+              <PropertyRef Name="FLOWER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FlowersEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBL_ANNE" EntityType="Self.TBL_ANNE" />
+          <EntitySet Name="TBL_DG" EntityType="Self.TBL_DG" />
+          <EntitySet Name="TBL_KULLANICI" EntityType="Self.TBL_KULLANICI" />
+          <EntitySet Name="TBL_MUSTERI" EntityType="Self.TBL_MUSTERI" />
+          <EntitySet Name="TBL_SATISLAR" EntityType="Self.TBL_SATISLAR" />
+          <EntitySet Name="TBL_SEVGİLİ" EntityType="Self.TBL_SEVGİLİ" />
+          <EntitySet Name="TBL_WEDDING" EntityType="Self.TBL_WEDDING" />
+          <EntitySet Name="TBL_YENIIS" EntityType="Self.TBL_YENIIS" />
+          <EntitySet Name="TBL_YENIYIL" EntityType="Self.TBL_YENIYIL" />
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_ANNE" Association="Self.FK_TBL_SATISLAR_TBL_ANNE">
+            <End Role="TBL_ANNE" EntitySet="TBL_ANNE" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_DG" Association="Self.FK_TBL_SATISLAR_TBL_DG">
+            <End Role="TBL_DG" EntitySet="TBL_DG" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_MUSTERI" Association="Self.FK_TBL_SATISLAR_TBL_MUSTERI">
+            <End Role="TBL_MUSTERI" EntitySet="TBL_MUSTERI" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_SEVGİLİ" Association="Self.FK_TBL_SATISLAR_TBL_SEVGİLİ">
+            <End Role="TBL_SEVGİLİ" EntitySet="TBL_SEVGİLİ" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_WEDDING" Association="Self.FK_TBL_SATISLAR_TBL_WEDDING">
+            <End Role="TBL_WEDDING" EntitySet="TBL_WEDDING" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_YENIIS" Association="Self.FK_TBL_SATISLAR_TBL_YENIIS">
+            <End Role="TBL_YENIIS" EntitySet="TBL_YENIIS" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBL_SATISLAR_TBL_YENIYIL" Association="Self.FK_TBL_SATISLAR_TBL_YENIYIL">
+            <End Role="TBL_YENIYIL" EntitySet="TBL_YENIYIL" />
+            <End Role="TBL_SATISLAR" EntitySet="TBL_SATISLAR" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FlowersModelStoreContainer" CdmEntityContainer="FlowersEntities2">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FlowersModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ANNE">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_ANNE">
+              <MappingFragment StoreEntitySet="TBL_ANNE">
+                <ScalarProperty Name="FLOWERID" ColumnName="FLOWERID" />
+                <ScalarProperty Name="FLOWERNAME" ColumnName="FLOWERNAME" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_DG">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_DG">
+              <MappingFragment StoreEntitySet="TBL_DG">
+                <ScalarProperty Name="FLOWERID" ColumnName="FLOWERID" />
+                <ScalarProperty Name="FLOWERNAME" ColumnName="FLOWERNAME" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_KULLANICI">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_KULLANICI">
+              <MappingFragment StoreEntitySet="TBL_KULLANICI">
+                <ScalarProperty Name="KULLANICIAD" ColumnName="KULLANICIAD" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MUSTERI">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_MUSTERI">
+              <MappingFragment StoreEntitySet="TBL_MUSTERI">
+                <ScalarProperty Name="MUSTERIID" ColumnName="MUSTERIID" />
+                <ScalarProperty Name="MUSTERIAD" ColumnName="MUSTERIAD" />
+                <ScalarProperty Name="MUSTERISOYAD" ColumnName="MUSTERISOYAD" />
+                <ScalarProperty Name="MUSTERIYER" ColumnName="MUSTERIYER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SATISLAR">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_SATISLAR">
+              <MappingFragment StoreEntitySet="TBL_SATISLAR">
+                <ScalarProperty Name="SATISID" ColumnName="SATISID" />
+                <ScalarProperty Name="FLOWER" ColumnName="FLOWER" />
+                <ScalarProperty Name="MUSTERI" ColumnName="MUSTERI" />
+                <ScalarProperty Name="ADET" ColumnName="ADET" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SEVGİLİ">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_SEVGİLİ">
+              <MappingFragment StoreEntitySet="TBL_SEVGİLİ">
+                <ScalarProperty Name="FLOWERID" ColumnName="FLOWERID" />
+                <ScalarProperty Name="FLOWERNAME" ColumnName="FLOWERNAME" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_WEDDING">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_WEDDING">
+              <MappingFragment StoreEntitySet="TBL_WEDDING">
+                <ScalarProperty Name="FLOWERID" ColumnName="FLOWERID" />
+                <ScalarProperty Name="FLOWERNAME" ColumnName="FLOWERNAME" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_YENIIS">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_YENIIS">
+              <MappingFragment StoreEntitySet="TBL_YENIIS">
+                <ScalarProperty Name="FLOWERID" ColumnName="FLOWERID" />
+                <ScalarProperty Name="FLOWERNAME" ColumnName="FLOWERNAME" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_YENIYIL">
+            <EntityTypeMapping TypeName="FlowersModel.TBL_YENIYIL">
+              <MappingFragment StoreEntitySet="TBL_YENIYIL">
+                <ScalarProperty Name="FLOWERID" ColumnName="FLOWERID" />
+                <ScalarProperty Name="FLOWERNAME" ColumnName="FLOWERNAME" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="PHOTO" ColumnName="PHOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

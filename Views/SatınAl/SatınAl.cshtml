@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "SatınAl";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<div Class="modal" id="Modal1">
+    <div Class="modal-dialog">
+        <div Class="modal-content">
+            <div Class="modal-header">
+                @*<h2 Class="modal-title">Manuel Olarak Ekle</h2>*@
+            </div>
+            <form method="post">
+                <div Class="modal-body">
+                    <Label> Müşteri Adı</Label>
+                    <input type="text" name="MUSTERIAD" Class="form-control" />
+                    <br />
+                    <Label> Müşteri Soyadı</Label>
+                    <input type="text" name="MUSTERISOYAD" Class="form-control" />
+                    <br />
+                    <Label> Müşteri Adresi</Label>
+                    <input type="text" name="MUSTERIYER" Class="form-control" />
+                    <br />
+                    <Label> Teslim Alıcak Kişinin Adı</Label>
+                    <input type="text"  Class="form-control" />
+                    <br />
+                    <Label> Teslim Alcak Kişinin Soyadı</Label>
+                    <input type="text"  Class="form-control" />
+                    <br />
+                    <Label> Teslim Alıcak Kişinin Adresi</Label>
+                    <input type="text"  Class="form-control" />
+                    <br />
+                    <Label> Kredi Kartı Numarası</Label>
+                    <input type="text"  Class="form-control" />
+                    <br />
+                    <Label> Güvenlik Kodu(CVV)</Label>
+                    <input type="text"  Class="form-control" />
+                    <br />
+                    <Button type="submit" Class="btn btn-info" style="margin-top:15px;">Siparişi Onayla</Button>
+                    <Button type="button" Class="btn btn-danger" data-dismiss="modal" style="margin-top:15px;">İptal Et</Button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,69 @@
+﻿@using WebApplication1.Models.Entity
+@model List<TBL_WEDDING>
+
+@{
+    ViewBag.Title = "TabloWED";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<h3 style="margin-top:15px;">DÜĞÜN ÇİÇEKLERİ </h3>
+<table class="table table-bordered">
+    <tr>
+        <th>FLOWER ID</th>
+        <th>FLOWER NAME</th>
+        <th>FİYAT</th>
+        <th>STOK</th>
+        <th>PHOTO NAME</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var wed in Model)
+        {
+            <tr>
+                <td>@wed.FLOWERID</td>
+                <td>@wed.FLOWERNAME</td>
+                <td>@wed.FIYAT</td>
+                <td>@wed.STOK</td>
+                <td>@wed.PHOTO</td>
+                <td><a href="/Admin/SİLwed/@wed.FLOWERID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Admin/WedGetir/@wed.FLOWERID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button type="button" Class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Ürün Ekle</button>
+<div Class="modal" id="Modal1">
+    <div Class="modal-dialog">
+        <div Class="modal-content">
+            <div Class="modal-header">
+                <h2 Class="modal-title">Yeni Ürün Ekle</h2>
+            </div>
+            <form method="post" action="/Admin/Eklewed/">
+                <div Class="modal-body">
+                    <div>
+                        <label>Flower Name</label>
+                        <input type="text" class=" form-control" name="FLOWERNAME" />
+                    </div>
+                    <div>
+                        <label>Fiyat</label>
+                        <input type="text" class=" form-control" name="FIYAT" />
+                    </div>
+                    <div>
+                        <label>Stok</label>
+                        <input type="text" class=" form-control" name="STOK" />
+                    </div>
+                    <div>
+                        <label>Photo Name</label>
+                        <input type="text" class=" form-control" name="PHOTO" />
+                    </div>
+                    <Button type="submit" Class="btn btn-info" style="margin-top:15px;">Ekle</Button>
+                    <Button type="button" Class="btn btn-danger" data-dismiss="modal" style="margin-top:15px;">İptal Et</Button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
